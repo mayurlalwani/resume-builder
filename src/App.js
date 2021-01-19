@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
 import firebaseAuth from "./config/firebaseConfig";
+import Navbar from "./components/Navbar";
+import "./App.scss";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -19,6 +21,9 @@ function App() {
       signInSuccess: () => false,
     },
   };
+  const handleLogout = () => {
+    firebase.auth().signOut();
+  };
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setIsSignedIn(!!user);
@@ -28,12 +33,17 @@ function App() {
     });
   }, []);
   return (
-    <div>
-      {isSignedIn ? <h1>Signed In</h1> : <h1>Not signed In</h1>}
-      <StyledFirebaseAuth
-        uiConfig={firebaseConfig}
-        firebaseAuth={firebase.auth()}
-      />
+    <div className="main-container">
+      {isSignedIn ? (
+        <span>
+          <Navbar handleLogout={handleLogout} />
+        </span>
+      ) : (
+        <StyledFirebaseAuth
+          uiConfig={firebaseConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      )}
     </div>
   );
 }
