@@ -1,4 +1,15 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
 .main-container {
-  border: solid;
-  height: 100vh;
+  height: 100%;
+  width: 100vw;
+
+  & .resume-heading-section {
+    width: 30%;
+  }
+  & .input-value {
+    width: 100%;
+  }
 }

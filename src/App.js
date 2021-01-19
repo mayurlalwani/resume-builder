@@ -3,6 +3,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase";
 import firebaseAuth from "./config/firebaseConfig";
 import Navbar from "./components/Navbar";
+import LeftSideBar from "./components/LeftSideBar";
 import "./App.scss";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       {isSignedIn ? (
         <span>
           <Navbar handleLogout={handleLogout} />
+          <LeftSideBar />
         </span>
       ) : (
         <StyledFirebaseAuth
