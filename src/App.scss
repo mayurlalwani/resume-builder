@@ -7,9 +7,12 @@
   width: 100vw;
 
   & .resume-heading-section {
-    width: 30%;
   }
   & .input-value {
     width: 100%;
+  }
+  & .left-sidebar {
+    height: 93vh;
+    width: 30%;
   }
 }
