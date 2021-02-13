@@ -4,6 +4,7 @@ import firebase from "firebase";
 import firebaseAuth from "./config/firebaseConfig";
 import Navbar from "./components/Navbar";
 import LeftSideBar from "./components/LeftSideBar";
+import MainSectionResume from "./components/MainSectionResume";
 import "./App.scss";
 
 function App() {
@@ -38,7 +39,10 @@ function App() {
       {isSignedIn ? (
         <span>
           <Navbar handleLogout={handleLogout} />
-          <LeftSideBar />
+          <div className="resume-section-container">
+            <LeftSideBar />
+            <MainSectionResume />
+          </div>
         </span>
       ) : (
         <StyledFirebaseAuth

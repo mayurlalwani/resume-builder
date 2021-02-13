@@ -2,11 +2,21 @@
   padding: 0px;
   margin: 0px;
 }
+h1 {
+  font-size: 32px;
+}
+
+h4 {
+  font-weight: 700;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
 .main-container {
   height: 100%;
   width: 100vw;
 
-  & .resume-heading-section {
+  & .resume-section-container {
+    display: flex;
   }
   & .input-value {
     width: 100%;

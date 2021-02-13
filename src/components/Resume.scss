@@ -1,0 +1,32 @@
+.main-container-resume-section {
+  width: 95vw;
+  height: 93vh;
+  border: solid 1px;
+
+  & .resume-details {
+    display: flex;
+    // justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+    box-shadow: 7px 5px 32px 6px gray;
+    & .left-section-primary-details {
+      width: 55%;
+      // border: solid 2px green;
+      height: 93vh;
+      padding-left: 5%;
+      padding-top: 5%;
+      //   margin-left: 10%;
+    }
+    & .right-section-secondary-details {
+      width: 40%;
+      // border: solid 3px red;
+      height: 93vh;
+      padding-top: 5%;
+      //   margin-left: 10%;
+      //   margin-right: 10%;
+    }
+    & .section-container {
+      margin-top: 5%;
+    }
+  }
+}
