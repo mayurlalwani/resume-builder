@@ -8,17 +8,33 @@ import { ExperienceDetailsConfig } from "./expLabels";
 
 const { Panel } = Collapse;
 
-const LeftSideBar = () => {
-  const [fullName, setFullName] = useState("");
+const LeftSideBar = ({
+  personalInfoDetails,
+  setPersonalInfoDetails,
+  educationInfoDetails,
+  setEducationInfoDetails,
+}) => {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [expPanelClicked, setAddExperiencePanelClicked] = useState(false);
   const [expPanelId, setExpPanelId] = useState(0);
-  const handleChange = (e) => {
-    setFullName(e.target.value);
-  };
+
   const [experienceValues, setExperienceValues] = useState([{}]);
 
   const [expDetails, setExpDetails] = useState([]);
+
+  const handleChange = (e) => {
+    setPersonalInfoDetails({
+      ...personalInfoDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChangeEducationDetails = (e) => {
+    setEducationInfoDetails({
+      ...educationInfoDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleChangeExperienceValues = (e) => {
     setExperienceValues([{ [e.target.name]: e.target.value }]);
@@ -28,22 +44,32 @@ const LeftSideBar = () => {
     {
       label: "Name",
       placeholder: "Full Name",
+      name: "fullName",
     },
     {
-      label: "DOB",
-      placeholder: "DD/MM/YYYY",
+      label: "Resume Headline",
+      placeholder: "Resume Headline",
+      name: "resumeHeadline",
     },
     {
-      label: "Address",
+      label: "Address Line 1",
       placeholder: "Address",
+      name: "address",
+    },
+    {
+      label: "City",
+      placeholder: "City",
+      name: "city",
     },
     {
       label: "Contact",
       placeholder: "Contact",
+      name: "contact",
     },
     {
       label: "Email",
       placeholder: "Email",
+      name: "email",
     },
   ];
 
@@ -56,26 +82,31 @@ const LeftSideBar = () => {
       id: 1,
       label: "College Name",
       placeholder: "College Name",
+      name: "collegeName",
     },
     {
       id: 2,
       label: "Location",
       placeholder: "Location",
+      name: "collegeLocation",
     },
     {
       id: 3,
       label: "Degree",
       placeholder: "Degree",
+      name: "degree",
     },
     {
       id: 4,
       label: "Start Date",
       placeholder: "Start Date",
+      name: "startDate",
     },
     {
       id: 5,
       label: "End Date",
       placeholder: "End Date",
+      name: "endDate",
     },
   ];
 
@@ -135,6 +166,8 @@ const LeftSideBar = () => {
               placeholder={personalInfo.placeholder}
               onChange={handleChange}
               className="input-value"
+              name={personalInfo.name}
+              autoComplete={false}
             />
           ))}
         </Panel>
@@ -169,7 +202,7 @@ const LeftSideBar = () => {
               id="standard-multiline-flexible"
               label={educationInfo.label}
               placeholder={educationInfo.placeholder}
-              onChange={handleChange}
+              onChange={handleChangeEducationDetails}
               className="input-value"
             />
           ))}

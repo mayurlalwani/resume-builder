@@ -10,6 +10,10 @@ import "./App.scss";
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [userId, setUserId] = useState("");
+  const [loggedUserName, setLoggedUserName] = useState("");
+  const [personalInfoDetails, setPersonalInfoDetails] = useState({});
+  const [educationInfoDetails, setEducationInfoDetails] = useState({});
+
   firebaseAuth.auth().onAuthStateChanged((user) => {
     return user
       ? setIsSignedIn(true) && setUserId(user.uid)
@@ -31,6 +35,7 @@ function App() {
       setIsSignedIn(!!user);
       if (user.uid !== "") {
         setUserId(user.uid);
+        setLoggedUserName(user.displayName);
       }
     });
   }, []);
@@ -38,10 +43,18 @@ function App() {
     <div className="main-container">
       {isSignedIn ? (
         <span>
-          <Navbar handleLogout={handleLogout} />
+          <Navbar handleLogout={handleLogout} loggedUserName={loggedUserName} />
           <div className="resume-section-container">
-            <LeftSideBar />
-            <MainSectionResume />
+            <LeftSideBar
+              personalInfoDetails={personalInfoDetails}
+              setPersonalInfoDetails={setPersonalInfoDetails}
+              educationInfoDetails={educationInfoDetails}
+              setEducationInfoDetails={setEducationInfoDetails}
+            />
+            <MainSectionResume
+              personalInfoDetails={personalInfoDetails}
+              educationInfoDetails={educationInfoDetails}
+            />
           </div>
         </span>
       ) : (
