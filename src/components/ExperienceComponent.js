@@ -18,7 +18,6 @@ const ExperienceComponent = ({ experienceInfo, listCount }) => {
         <Panel header={`Experience #${listCount}`} key={listCount}>
           {experienceInfo.details
             ? experienceInfo.details.map((info, index) => {
-                console.log({ info });
                 return (
                   <TextField
                     id={`standard-multiline-flexible-3${info.id}`}
