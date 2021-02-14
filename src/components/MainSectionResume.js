@@ -11,7 +11,13 @@ const MainSectionResume = ({ personalInfoDetails, educationInfoDetails }) => {
     contact,
   } = personalInfoDetails;
 
-  const { collegeName } = educationInfoDetails;
+  const {
+    collegeName,
+    collegeLocation,
+    degree,
+    startDate,
+    endDate,
+  } = educationInfoDetails;
   return (
     <div className="main-container-resume-section">
       <div className="resume-details">
@@ -32,9 +38,12 @@ const MainSectionResume = ({ personalInfoDetails, educationInfoDetails }) => {
           </section>
           <section className="section-container">
             <h4>Education</h4>
-            <b>{collegeName || "School Name"}</b>, Location - Degree
+            <b>{collegeName || "School Name"}</b>,{" "}
+            {collegeLocation || "Location"} - {degree || "Degree"}
             <br />
-            <span>Month 2010 - PRESENT</span>
+            <span>
+              {startDate || "Month 2010"} - {endDate || "PRESENT"}
+            </span>
             <p>
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
               nonummy nibh.

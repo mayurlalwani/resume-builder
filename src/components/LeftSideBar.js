@@ -204,6 +204,7 @@ const LeftSideBar = ({
               placeholder={educationInfo.placeholder}
               onChange={handleChangeEducationDetails}
               className="input-value"
+              name={educationInfo.name}
             />
           ))}
         </Panel>
