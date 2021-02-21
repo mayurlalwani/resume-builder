@@ -13,6 +13,8 @@ const LeftSideBar = ({
   setPersonalInfoDetails,
   educationInfoDetails,
   setEducationInfoDetails,
+  experienceDetails,
+  setExperienceDetails,
 }) => {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [expPanelClicked, setAddExperiencePanelClicked] = useState(false);
@@ -34,10 +36,6 @@ const LeftSideBar = ({
       ...educationInfoDetails,
       [e.target.name]: e.target.value,
     });
-  };
-
-  const handleChangeExperienceValues = (e) => {
-    setExperienceValues([{ [e.target.name]: e.target.value }]);
   };
 
   const personalInfoLabels = [
@@ -124,10 +122,12 @@ const LeftSideBar = ({
     {
       label: "Programming Languages",
       placeholder: "Programming Languages",
+      name: "programmingLanguages",
     },
     {
       label: "Tools & Technologies",
       placeholder: "Tools & Technologies",
+      name: "technologies",
     },
   ];
   const awardsLabel = [
@@ -138,15 +138,19 @@ const LeftSideBar = ({
   ];
 
   const handleAddExperiencePanel = (event, listCount) => {
-    setExpPanelId(expPanelId + 1);
-    let planningList = expDetails;
+    let expList = expDetails;
     let index = listCount;
+    setExpPanelId(listCount + 1);
+    if (!expList[index]) {
+      expList[index] = { id: listCount };
+      if (!expList[index].details) {
+        expList[index].details = [];
+        expList[index].details.push(ExperienceDetailsConfig[0].details);
+      }
+    }
 
-    planningList.push(ExperienceDetailsConfig[0]);
-
-    setExpDetails(planningList);
+    setExpDetails(expList);
   };
-
   useState(() => {
     setExpDetails(JSON.parse(JSON.stringify(ExperienceDetailsConfig)));
   }, []);
@@ -183,6 +187,8 @@ const LeftSideBar = ({
                   allDetails={expDetails}
                   listCount={index}
                   expPanelId={expPanelId}
+                  experienceDetails={experienceDetails}
+                  setExperienceDetails={setExperienceDetails}
                 />
               </>
             );

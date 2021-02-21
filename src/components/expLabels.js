@@ -1,6 +1,6 @@
 export const ExperienceDetailsConfig = [
   {
-    id: 1,
+    id: 0,
     details: [
       {
         label: "Company Name",
@@ -20,14 +20,17 @@ export const ExperienceDetailsConfig = [
       {
         label: "Start Date",
         placeholder: "",
+        name: "joiningDate",
       },
       {
         label: "End Date",
         placeholder: "End Date",
+        name: "leavingDate",
       },
       {
         label: "Description",
         placeholder: "",
+        name: "jobDescription",
       },
     ],
   },

@@ -13,6 +13,8 @@ function App() {
   const [loggedUserName, setLoggedUserName] = useState("");
   const [personalInfoDetails, setPersonalInfoDetails] = useState({});
   const [educationInfoDetails, setEducationInfoDetails] = useState({});
+  const [experienceDetails, setExperienceDetails] = useState(null);
+  const [skills, setSkills] = useState([]);
 
   firebaseAuth.auth().onAuthStateChanged((user) => {
     return user
@@ -50,10 +52,16 @@ function App() {
               setPersonalInfoDetails={setPersonalInfoDetails}
               educationInfoDetails={educationInfoDetails}
               setEducationInfoDetails={setEducationInfoDetails}
+              experienceDetails={experienceDetails}
+              setExperienceDetails={setExperienceDetails}
+              skills={skills}
+              setSkills={setSkills}
             />
             <MainSectionResume
               personalInfoDetails={personalInfoDetails}
               educationInfoDetails={educationInfoDetails}
+              experienceDetails={experienceDetails}
+              skills={skills}
             />
           </div>
         </span>

@@ -4,10 +4,22 @@ import { Collapse } from "antd";
 
 const { Panel } = Collapse;
 
-const ExperienceComponent = ({ experienceInfo, listCount }) => {
+const ExperienceComponent = ({
+  experienceInfo,
+  listCount,
+  setExperienceDetails,
+  experienceDetails,
+  expPanelId,
+}) => {
   function callback(key) {
     console.log(key);
   }
+  const handleChangeExperienceDetails = (e, index) => {
+    setExperienceDetails({
+      ...experienceDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <>
       <Collapse
@@ -22,11 +34,11 @@ const ExperienceComponent = ({ experienceInfo, listCount }) => {
                   <TextField
                     id={`standard-multiline-flexible-3${info.id}`}
                     label={info.label}
-                    name={info.name}
+                    name={info.name + "-" + expPanelId}
                     placeholder={info.placeholder}
-                    //   onChange={handleChangeExperienceValues}
                     className="input-value"
                     value={info.value}
+                    onChange={handleChangeExperienceDetails}
                   />
                 );
               })
